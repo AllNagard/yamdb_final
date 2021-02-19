@@ -69,7 +69,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull allnagard/yamdb_web:v1
+            sudo docker pull allnagard/yamdb_web:v2
             sudo docker-compose stop
             sudo docker-compose rm web
             sudo docker-compose up
