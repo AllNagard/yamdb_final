@@ -1,6 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
-name: yambd
+name: yamdb
 
 on: [push]
 
@@ -45,22 +43,25 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           push: true
           tags: allnagard/yamdb_web:v2
-  
   deploy:
+    env:
+      PROJECT_ROOT: ~/www/yamdb_final
+
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+    
       - name: copy docker-compose and nginx
-        uses: appleboy/ssh-action@master
+        uses: appleboy/csp-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          source: "docker-compose.yaml, nginx/default.conf"
-          target: "~"
+          source: "docker-compose.yaml, nginx/default.conf, static, media, .env"
+          target: ${{ secrets.PROJECT_ROOT }}
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
@@ -69,11 +70,12 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            cd ${{ secrets.PROJECT_ROOT }}
             sudo docker pull allnagard/yamdb_web:v2
             sudo docker-compose stop
             sudo docker-compose rm web
             sudo docker-compose up
-  
+
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
