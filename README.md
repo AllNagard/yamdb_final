@@ -1,3 +1,5 @@
+[Build Status](https://github.com/AllNagard/yamdb_final/workflows/yambd_workflow/badge.svg)
+
 # yamdb_final
 yamdb_final
 # Project Title
@@ -35,7 +37,6 @@ yamdb_final
 ## Contributing
 pass
 
-[![yambd](https://github.com/AllNagard/yamdb_final/actions/workflows/yambd_workflow.yml/badge.svg)](https://github.com/AllNagard/yamdb_final/actions/workflows/yambd_workflow.yml)
 
 
 ## Versioning
