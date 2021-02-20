@@ -54,14 +54,14 @@ jobs:
         uses: actions/checkout@v2
     
       - name: copy docker-compose and nginx
-        uses: appleboy/csp-action@master
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           source: "docker-compose.yaml, nginx/default.conf, static, media, .env"
-          target: ${{ secrets.PROJECT_ROOT }}
+          target: "~"
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
@@ -70,7 +70,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            cd ${{ secrets.PROJECT_ROOT }}
             sudo docker pull allnagard/yamdb_web:v2
             sudo docker-compose stop
             sudo docker-compose rm web
