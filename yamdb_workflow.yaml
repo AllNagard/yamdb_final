@@ -42,7 +42,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           push: true
-          tags: allnagard/yamdb_web:v2
+          tags: allnagard/yamdb_web:3
   deploy:
     env:
       PROJECT_ROOT: ~/www/yamdb_final
@@ -71,7 +71,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             cd ${{ secrets.PROJECT_ROOT }}
-            sudo docker pull allnagard/yamdb_web:v2
+            sudo docker pull allnagard/yamdb_web:3
             sudo docker-compose stop
             sudo docker-compose rm web
             sudo docker-compose up
