@@ -61,7 +61,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           source: "docker-compose.yaml, nginx/default.conf, static, media, .env"
-          target: "~"
+          target: ${{ secrets.PROJECT_ROOT }}
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
@@ -70,6 +70,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            cd ${{ secrets.PROJECT_ROOT }}
             sudo docker pull allnagard/yamdb_web:3
             sudo docker-compose stop
             sudo docker-compose rm web
