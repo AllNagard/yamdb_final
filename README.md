@@ -35,7 +35,7 @@ yamdb_final
 ## Contributing
 pass
 
-https://github.com/AllNagard/yamdb_final/workflows/yambd_workflow/badge.svg)
+[![yambd](https://github.com/AllNagard/yamdb_final/actions/workflows/yambd_workflow.yml/badge.svg)](https://github.com/AllNagard/yamdb_final/actions/workflows/yambd_workflow.yml)
 
 
 ## Versioning
