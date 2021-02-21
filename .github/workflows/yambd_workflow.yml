@@ -46,9 +46,6 @@ jobs:
           push: true
           tags: allnagard/yamdb_web:3
   deploy:
-    env:
-      PROJECT_ROOT: ~/yamdb_final
-
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     steps:
