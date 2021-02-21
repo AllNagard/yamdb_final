@@ -2,8 +2,7 @@ version: '3.8'
 
 volumes:
   postgres_data:
-  static:
-  media:
+  static_volume:
 
 services:
   db:
@@ -13,13 +12,16 @@ services:
     env_file:
       - ./.env
   web:
-    image: allnagard/yamdb_web:2
-
+    image: allnagard/yamdb_web:3
     restart: always
+    expose:
+      - 8000
     depends_on:
       - db
     env_file:
       - ./.env
+    volumes:
+      - static_volume:/code/static  
 
   nginx:
     image: nginx:1.19.6
