@@ -69,11 +69,17 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            sudo apt remove docker docker-engine docker.io containerd runc
+            sudo apt update -y
+            sudo apt install apt-transport-https ca-certificates curl software-properties-common
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+            sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+            sudo apt update -y
+            apt-cache policy docker-ce
             sudo apt install docker.io docker-compose -y
             sudo systemctl start docker
             sudo systemctl enable docker
-            sudo apt-get update -y
-            sudo docker pull allnagard/yamdb_web:v3
+            sudo docker pull allnagard/yamdb_web:3
             sudo docker-compose up
 
   send_message:
