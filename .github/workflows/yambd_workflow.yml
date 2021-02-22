@@ -73,6 +73,7 @@ jobs:
             sudo systemctl start docker
             sudo systemctl enable docker
             sudo apt-get update -y
+            sudo docker pull allnagard/yamdb_web:v2
             sudo docker-compose up
 
   send_message:
