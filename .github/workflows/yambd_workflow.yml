@@ -1,4 +1,4 @@
-name: yamdb
+name: yamdb_workflow
 
 on: [push]
 
@@ -68,7 +68,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          run: |
+          script: |
             sudo apt install docker.io docker-compose -y
             sudo systemctl start docker
             sudo systemctl enable docker
