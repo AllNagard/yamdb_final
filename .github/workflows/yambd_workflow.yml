@@ -68,11 +68,11 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          script: |
-            sudo apt-get update -y
+          run: |
             sudo apt install docker.io docker-compose -y
             sudo systemctl start docker
-            sudo docker pull allnagard/yamdb_web:3
+            sudo systemctl enable docker
+            sudo apt-get update -y
             sudo docker-compose up
 
   send_message:
