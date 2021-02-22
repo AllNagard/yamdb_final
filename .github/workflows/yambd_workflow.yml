@@ -74,7 +74,7 @@ jobs:
             sudo apt install docker.io docker-compose -y
             sudo systemctl start docker
             sudo systemctl enable docker
-            sudo docker pull okodit/yamdb_final
+            sudo docker pull allnagard/yamdb_web:3
             sudo docker-compose up
 
   send_message:
