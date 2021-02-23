@@ -76,8 +76,8 @@ jobs:
             sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
             sudo apt update -y
             apt-cache policy docker-ce
-            sudo apt install docker.io -y
-            sudo apt install docker-compose -y
+            apt-get install -y lxc-docker-20.10.2
+            apt-get install lxc-docker-compose-1.27.4
             sudo systemctl start docker
             sudo systemctl enable docker
             sudo docker pull allnagard/yamdb_web:3
