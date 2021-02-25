@@ -14,14 +14,12 @@ services:
   web:
     image: allnagard/yamdb_web:3
     restart: always
-    expose:
-      - 8000
+    ports:
+      - "8000:8000"
     depends_on:
       - db
     env_file:
-      - ./.env
-    volumes:
-      - ./static/:/code/static  
+      - ./.env 
 
   nginx:
     image: nginx:1.19.6
