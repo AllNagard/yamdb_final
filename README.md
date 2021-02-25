@@ -9,16 +9,18 @@ yamdb_final
 
 ### Prerequisites
 
-Развертывание на сервере происходит автоматический при выполнении push в ветку master
+Развертывание на сервере происходит автоматически при выполнении push в ветку master
 
 ### Installing
 
 Скачайте каталог yamdb_final
-В корневой директории запустите команду docker-compose up
-После запуска контейнера приложение будет доступно по адресу http://0.0.0.0:8000
+
+
 Для остановки приложения выполните команду docker-compose down
 
 Переименуйте файл .env.example в .env и внесите в него индивидуальные настройки
+
+для подключения статики выплоните python3 manage.py collectstatic
 
 для создания суперпользователя выполните команду python3 manage.py createsuperuser 
 
@@ -53,7 +55,7 @@ pass
 ## License
 Этот проект лицензируется в соответствии с лицензией MIT License
 
-Copyright (c) 2021 infra_sp2
+Copyright (c) 2021 yamdb_final
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

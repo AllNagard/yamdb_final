@@ -3,6 +3,7 @@ version: '3.3'
 volumes:
   postgres_data:
   static:
+  media:
 
 services:
   db:
@@ -19,7 +20,10 @@ services:
     depends_on:
       - db
     env_file:
-      - ./.env 
+      - ./.env
+    volumes:
+      - ./static/:/code/static/
+      - ./media/:/code/media/      
 
   nginx:
     image: nginx:1.19.6
@@ -30,4 +34,4 @@ services:
       - ./static/:/code/static/
       - ./media/:/code/media/
     depends_on:
-      - web  
+      - web
