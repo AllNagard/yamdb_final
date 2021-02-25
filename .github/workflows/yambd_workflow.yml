@@ -60,7 +60,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           source: "docker-compose.yaml, nginx/default.conf, static, media, .env.example"
-          target: "~"
+          target: "~/code/"
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
@@ -80,8 +80,9 @@ jobs:
             apt-get install lxc-docker-compose-1.27.4
             sudo systemctl start docker
             sudo systemctl enable docker
+            cd /code
             sudo docker pull allnagard/yamdb_web:3
-            sudo docker-compose up
+            sudo docker-compose up -d
 
   send_message:
     runs-on: ubuntu-latest
