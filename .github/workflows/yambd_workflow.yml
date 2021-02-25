@@ -80,7 +80,7 @@ jobs:
             apt-get install lxc-docker-compose-1.27.4
             sudo systemctl start docker
             sudo systemctl enable docker
-            cd /code
+            cd code
             sudo docker pull allnagard/yamdb_web:3
             sudo docker-compose up -d
 
