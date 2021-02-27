@@ -1,4 +1,6 @@
-[Build Status](https://github.com/AllNagard/yamdb_final/workflows/yambd_workflow/badge.svg)
+![Build Status](https://github.com/AllNagard/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+
+ip адрес приложения 130.193.56.96
 
 # yamdb_final
 yamdb_final
@@ -20,13 +22,15 @@ yamdb_final
 
 Переименуйте файл .env.example в .env и внесите в него индивидуальные настройки
 
-для подключения статики выплоните python3 manage.py collectstatic
+Для перехода в контейнер выполните команду docker-compose exec <имя_контейнера> bash
+
+для подключения статики выполните python3 manage.py collectstatic
 
 для создания суперпользователя выполните команду python3 manage.py createsuperuser 
 
 для заполнения базы данных начальными данными выполните команду python3 manage.py loaddata fixtures.json
 
-запуск миграций в контейнере производится командой fab runmigrations --hosts="127.0.0.1"
+запуск миграций в контейнере производится командой fab runmigrations --hosts="130.193.56.96"
 
 
 
@@ -39,6 +43,7 @@ yamdb_final
 * [Django](https://www.djangoproject.com/) - The web framework used
 * [PostgreSQL](https://www.postgresql.org/) - Relational Database
 * [Docker](https://www.docker.com/) - Used for containerized application
+* [Fabric] (http://www.fabfile.org/) - Used for migration process automation 
 
 ## Contributing
 pass

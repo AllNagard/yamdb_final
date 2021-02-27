@@ -15,8 +15,6 @@ services:
   web:
     image: allnagard/yamdb_web:3
     restart: always
-    ports:
-      - "8000:8000"
     depends_on:
       - db
     env_file:

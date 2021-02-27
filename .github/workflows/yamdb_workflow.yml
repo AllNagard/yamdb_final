@@ -47,10 +47,12 @@ jobs:
           tags: allnagard/yamdb_web:3
   
   deploy:
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     steps:
       - name: Check out the repo
+        if: ${{  }}
         uses: actions/checkout@v2
     
       - name: copy docker-compose and nginx
@@ -71,8 +73,6 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             cd code
-            sudo apt-get update -y
-            sudo apt-get remove docker docker-engine docker.io -y
             sudo apt install docker.io docker-compose -y
             sudo systemctl start docker
             sudo chown $USER /var/run/docker.sock
