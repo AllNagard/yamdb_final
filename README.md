@@ -1,4 +1,4 @@
-![Build Status](https://github.com/AllNagard/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+![Build Status](https://github.com/AllNagard/yamdb_final/workflows/yamdb_workflow/badge.svg)
 
 ip адрес приложения 130.193.56.96
 
