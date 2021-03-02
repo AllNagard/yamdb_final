@@ -2,8 +2,8 @@ version: '3.3'
 
 volumes:
   postgres_data:
-  static:
-  media:
+  static_files:
+  media_files:
 
 services:
   db:
@@ -20,8 +20,8 @@ services:
     env_file:
       - ./.env
     volumes:
-      - ./static/:/code/static/
-      - ./media/:/code/media/      
+      - ./static_files/:/code/static/
+      - ./media_files/:/code/media/      
 
   nginx:
     image: nginx:1.19.6
